@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Web3 from 'web3';
 
 function App() {
+  const [account, setAccount] = useState('')
+
+  useEffect(() => {
+    const loadBlockChainData = async () => {
+      const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
+      const accounts = await web3.eth.getAccounts()
+      setAccount(accounts[0] )
+    }
+
+    loadBlockChainData()
+  
+    return () => {
+      second
+    }
+  }, [])
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <h1>Hello, World!</h1>
+        <p>Your account: {account}</p>
+      </div>
     </div>
   );
 }
