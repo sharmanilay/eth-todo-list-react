@@ -8,7 +8,7 @@ const TodoList = ({ createTask, tasks }) => {
       event.preventDefault()
       createTask(content)
     }}>
-      <input id="newTask" ref={(input) => setContent(input)} type="text" className="form-control" placeholder="Add task..." required />
+      <input id="newTask" onChange={(e) => setContent(e.target.value)} type="text" className="form-control" placeholder="Add task..." required />
       <input type="submit" hidden={true} />
     </form>
     <ul id="taskList" className="list-unstyled">
